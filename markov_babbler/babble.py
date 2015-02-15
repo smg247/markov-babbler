@@ -85,10 +85,10 @@ def create_babble(n_grams, num_of_words):
         follower_choice_index = choice(list(next_token.get_followers().keys()))
 
         for follower in next_token.get_followers()[follower_choice_index]:
-            i += 1
-            final_babble += u'%s ' % follower
             try:  # every once in a while, such as with the key u'not', a KeyError will present itself
+                final_babble += u'%s ' % follower
                 next_token = n_grams[follower]
+                i += 1
             except KeyError:
                 next_token = n_grams[choice(list(n_grams.keys()))]
 
